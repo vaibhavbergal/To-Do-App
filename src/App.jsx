@@ -59,9 +59,9 @@ function App() {
 
           <Form />
 
-          <CardDescription className="px-1 py-2 bg-gray-600 rounded-lg">
+          <CardDescription className="p-1 bg-gray-600 rounded-lg">
             {todos.map((todo) => (
-              <li key={todo.id} className="mx-2 my-2 list-none">
+              <li key={todo.id} className="m-2 list-none ">
                 <TodoItem todo={todo} />
               </li>
             ))}

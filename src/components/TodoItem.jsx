@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { CardContent, CardDescription } from "./ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 function TodoItem({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
@@ -15,19 +17,18 @@ function TodoItem({ todo }) {
   };
 
   return (
-    <CardContent
-      className={`flex ${todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"}`}
+    <CardDescription
+      className={`flex border rounded-lg items-center gap-4 px-2 py-3  ${
+        todo.completed ? "bg-[#c6e9a7]" : "bg-green-400"
+      }`}
     >
+      <Checkbox checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
+
       <Input
-        type="checkbox"
-        className="cursor-pointer"
-        checked={todo.completed}
-        onChange={() => toggleTodo(todo.id)}
-      />
-      <Input
-        type="text"
-        className={`border outline-none w-full bg-transparent rounded-lg ${
-          isTodoEditable ? "border-black/10 px-2" : "border-transparent"
+        className={`border-transparent outline-none w-full bg-transparent rounded-lg  ${
+          isTodoEditable
+            ? "border-black/10 px-2"
+            : "hover:cursor-default border-transparent"
         } ${todo.completed ? "line-through" : ""}`}
         value={todoMsg}
         onChange={(e) => setTodoMsg(e.target.value)}
@@ -35,6 +36,7 @@ function TodoItem({ todo }) {
       />
 
       <Button
+        variant="outline"
         onClick={() => {
           if (todo.completed) return;
 
@@ -47,8 +49,14 @@ function TodoItem({ todo }) {
         {isTodoEditable ? "📁" : "✏️"}
       </Button>
 
-      <Button onClick={() => deleteTodo(todo.id)}>❌</Button>
-    </CardContent>
+      <Button
+        variant="destructive"
+        className="text-xl text-black/80"
+        onClick={() => deleteTodo(todo.id)}
+      >
+        <FaDeleteLeft />
+      </Button>
+    </CardDescription>
   );
 }
 
