@@ -22,13 +22,18 @@ function TodoItem({ todo }) {
         todo.completed ? "bg-[#c6e9a7]" : "bg-green-400"
       }`}
     >
-      <Checkbox checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
+      <input
+        type="checkbox"
+        className="cursor-pointer "
+        checked={todo.completed}
+        onChange={() => toggleTodo(todo.id)}
+      />
 
       <Input
         className={`border-transparent outline-none w-full bg-transparent rounded-lg  ${
           isTodoEditable
             ? "border-black/10 px-2"
-            : "hover:cursor-default border-transparent"
+            : "hover:cursor-default border-transparent text-black "
         } ${todo.completed ? "line-through" : ""}`}
         value={todoMsg}
         onChange={(e) => setTodoMsg(e.target.value)}
