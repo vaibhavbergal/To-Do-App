@@ -38,7 +38,7 @@ function TodoItem({ todo }) {
           onChange={(e) => setTodoMsg(e.target.value)}
           readOnly={!isTodoEditable}
         />
-        <p className="text-xs ">{todo.date}</p>
+        <p className="ml-3 text-xs">{todo.date}</p>
       </CardContent>
 
       <Button
