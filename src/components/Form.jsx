@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTodo } from "@/contexts";
 import { CardContent } from "@/components/ui/card";
+import { format } from "date-fns";
 
 function Form() {
   const [task, setTask] = useState("");
@@ -12,7 +13,14 @@ function Form() {
     e.preventDefault();
 
     if (!task) return;
-    addTodo({ id: todos.length + 1, task, completed: false });
+
+    const date = format(new Date(), "dd-MM-yyyy HH:mm");
+    addTodo({
+      id: todos.length + 1,
+      task,
+      date: date,
+      completed: false,
+    });
     setTask("");
   };
 

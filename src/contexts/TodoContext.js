@@ -5,6 +5,7 @@ export const TodoContext = createContext({
     {
       id: 1,
       task: "Todo 1",
+      date: new Date(),
       completed: false,
     },
   ],

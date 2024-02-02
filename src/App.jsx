@@ -60,11 +60,17 @@ function App() {
           <Form />
 
           <CardDescription className="p-1 bg-gray-600 rounded-lg">
-            {todos.map((todo) => (
-              <li key={todo.id} className="m-2 list-none ">
-                <TodoItem todo={todo} />
-              </li>
-            ))}
+            {todos.length > 0 ? (
+              todos.map((todo) => (
+                <li key={todo.id} className="m-2 list-none ">
+                  <TodoItem todo={todo} />
+                </li>
+              ))
+            ) : (
+              <p className="py-3 font-mono text-xl text-center">
+                No Tasks Available
+              </p>
+            )}
           </CardDescription>
         </Card>
       </div>
